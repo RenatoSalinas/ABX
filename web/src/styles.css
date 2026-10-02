@@ -504,6 +504,62 @@ td .actions {
   transition: width 0.4s ease;
 }
 
+/* ===== Datos: lista de catálogos ===== */
+.datos-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.datos-list {
+  width: 230px;
+  flex-shrink: 0;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.datos-list .datos-list-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+  padding: 8px 10px 6px;
+}
+
+.datos-list-item {
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.datos-list-item:hover {
+  background: #f1f5f9;
+}
+
+.datos-list-item.active {
+  background: #4f46e5;
+  color: #fff;
+  font-weight: 600;
+}
+
+.datos-main {
+  flex: 1;
+  min-width: 0;
+}
+
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
@@ -526,5 +582,15 @@ td .actions {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .datos-layout {
+    flex-direction: column;
+  }
+
+  .datos-list {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 }
