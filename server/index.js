@@ -6,6 +6,7 @@ import usersRoutes from './routes/users.js';
 import clientsRoutes from './routes/clients.js';
 import opportunitiesRoutes from './routes/opportunities.js';
 import eventTypesRoutes from './routes/event-types.js';
+import originsRoutes from './routes/origins.js';
 import statsRoutes from './routes/stats.js';
 
 const app = express();
@@ -19,6 +20,7 @@ app.use('/api/users', requireAuth, usersRoutes);
 app.use('/api/clients', requireAuth, clientsRoutes);
 app.use('/api/opportunities', requireAuth, opportunitiesRoutes);
 app.use('/api/event-types', requireAuth, eventTypesRoutes);
+app.use('/api/origins', requireAuth, originsRoutes);
 app.use('/api/stats', requireAuth, statsRoutes);
 
 app.use((err, req, res, next) => {

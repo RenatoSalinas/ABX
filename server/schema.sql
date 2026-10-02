@@ -17,6 +17,13 @@ CREATE TABLE IF NOT EXISTS clients (
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
+CREATE TABLE IF NOT EXISTS origins (
+  id SERIAL PRIMARY KEY,
+  name TEXT NOT NULL,
+  description TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
 CREATE TABLE IF NOT EXISTS event_types (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL,

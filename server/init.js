@@ -57,6 +57,15 @@ async function main() {
     for (const t of eventTypes) {
       await pool.query('INSERT INTO event_types (name, description) VALUES ($1, $2)', t);
     }
+    const origins = [
+      ['Sitio web', 'Contacto que llegó desde el sitio web'],
+      ['Referido', 'Recomendado por un cliente existente'],
+      ['Redes sociales', 'Contacto vía redes sociales'],
+      ['Llamada en frío', 'Prospecto contactado directamente']
+    ];
+    for (const o of origins) {
+      await pool.query('INSERT INTO origins (name, description) VALUES ($1, $2)', o);
+    }
     console.log('Datos de demo insertados');
   }
 
