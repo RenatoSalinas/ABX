@@ -1,0 +1,13 @@
+{
+  "previewPort": 3000,
+  "healthPath": "/",
+  "startCommand": "docker compose -f docker-compose.base44.yml up -d",
+  "secrets": [
+    {
+      "name": "JWT_SECRET",
+      "description": "Clave para firmar los tokens de sesión de la app",
+      "requiredAtBoot": true,
+      "generatedForDevelopment": true
+    }
+  ]
+}
