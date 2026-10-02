@@ -41,3 +41,31 @@ CREATE TABLE IF NOT EXISTS opportunities (
   expected_close DATE,
   created_at TIMESTAMPTZ DEFAULT now()
 );
+
+CREATE TABLE IF NOT EXISTS opportunity_events (
+  id SERIAL PRIMARY KEY,
+  opportunity_id INTEGER NOT NULL REFERENCES opportunities(id) ON DELETE CASCADE,
+  event_type_id INTEGER REFERENCES event_types(id) ON DELETE SET NULL,
+  title TEXT NOT NULL,
+  event_date DATE,
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS event_tasks (
+  id SERIAL PRIMARY KEY,
+  event_id INTEGER NOT NULL REFERENCES opportunity_events(id) ON DELETE CASCADE,
+  title TEXT NOT NULL,
+  due_date DATE,
+  done BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT now()
+);
+
+CREATE TABLE IF NOT EXISTS opportunity_commitments (
+  id SERIAL PRIMARY KEY,
+  opportunity_id INTEGER NOT NULL REFERENCES opportunities(id) ON DELETE CASCADE,
+  title TEXT NOT NULL,
+  due_date DATE,
+  done BOOLEAN NOT NULL DEFAULT false,
+  created_at TIMESTAMPTZ DEFAULT now()
+);

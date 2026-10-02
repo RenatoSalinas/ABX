@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { api, STAGES, stageLabel, formatMoney } from '../api';
 import Modal from '../components/Modal';
+import OpportunityDetail from '../components/opportunity/OpportunityDetail';
 
 const empty = {
   title: '',
@@ -16,6 +17,7 @@ export default function Oportunidades() {
   const [clients, setClients] = useState([]);
   const [stageFilter, setStageFilter] = useState('');
   const [form, setForm] = useState(null);
+  const [expandedId, setExpandedId] = useState(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
@@ -119,28 +121,44 @@ export default function Oportunidades() {
             </thead>
             <tbody>
               {opps.map((o) => (
-                <tr key={o.id}>
-                  <td>
-                    <strong>{o.title}</strong>
-                    {o.notes ? <div className="muted small-text">{o.notes}</div> : null}
-                  </td>
-                  <td>{o.client_name || '—'}</td>
-                  <td>
-                    <span className={`badge ${o.stage}`}>{stageLabel(o.stage)}</span>
-                  </td>
-                  <td>{formatMoney(o.value)}</td>
-                  <td>{o.expected_close || '—'}</td>
-                  <td>
-                    <div className="actions">
-                      <button className="btn secondary small" onClick={() => setForm(o)}>
-                        Editar
+                <Fragment key={o.id}>
+                  <tr>
+                    <td>
+                      <button
+                        type="button"
+                        className="row-toggle"
+                        onClick={() => setExpandedId(expandedId === o.id ? null : o.id)}
+                      >
+                        <span className="chev">{expandedId === o.id ? '▾' : '▸'}</span>
+                        <strong>{o.title}</strong>
                       </button>
-                      <button className="btn danger small" onClick={() => remove(o)}>
-                        Eliminar
-                      </button>
-                    </div>
-                  </td>
-                </tr>
+                      {o.notes ? <div className="muted small-text">{o.notes}</div> : null}
+                    </td>
+                    <td>{o.client_name || '—'}</td>
+                    <td>
+                      <span className={`badge ${o.stage}`}>{stageLabel(o.stage)}</span>
+                    </td>
+                    <td>{formatMoney(o.value)}</td>
+                    <td>{o.expected_close || '—'}</td>
+                    <td>
+                      <div className="actions">
+                        <button className="btn secondary small" onClick={() => setForm(o)}>
+                          Editar
+                        </button>
+                        <button className="btn danger small" onClick={() => remove(o)}>
+                          Eliminar
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  {expandedId === o.id && (
+                    <tr className="detail-row">
+                      <td colSpan={6}>
+                        <OpportunityDetail opportunity={o} />
+                      </td>
+                    </tr>
+                  )}
+                </Fragment>
               ))}
             </tbody>
           </table>

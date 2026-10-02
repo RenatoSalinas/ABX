@@ -560,6 +560,182 @@ td .actions {
   min-width: 0;
 }
 
+/* ===== Detalle de oportunidad (vista ampliada) ===== */
+.row-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.row-toggle .chev {
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.detail-row > td {
+  background: #f8fafc;
+  padding: 0;
+}
+
+.opp-detail {
+  padding: 18px 20px 22px;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.detail-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.detail-section-head h4 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #475569;
+}
+
+.event-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+
+.event-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.event-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.event-meta {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.event-notes {
+  font-size: 13px;
+  color: #475569;
+  margin-top: 6px;
+  white-space: pre-wrap;
+}
+
+.task-list {
+  margin-top: 10px;
+  border-top: 1px dashed #e2e8f0;
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.task-item,
+.commit-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.commit-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.task-item .task-title,
+.commit-item .task-title {
+  flex: 1;
+}
+
+.task-item.done .task-title,
+.commit-item.done .task-title {
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.task-due {
+  color: #94a3b8;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: #4f46e5;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.inline-input {
+  padding: 7px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  background: #fff;
+}
+
+.inline-input:focus {
+  outline: 2px solid #4f46e5;
+  border-color: #4f46e5;
+}
+
+.task-add-form,
+.commit-add-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.commit-add-form {
+  margin-bottom: 12px;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-start;
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .layout {
     flex-direction: column;
@@ -592,5 +768,9 @@ td .actions {
     width: 100%;
     flex-direction: row;
     flex-wrap: wrap;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
   }
 }
