@@ -49,6 +49,14 @@ async function main() {
         o
       );
     }
+    const eventTypes = [
+      ['Reunión', 'Encuentro presencial o virtual con el cliente'],
+      ['Llamada', 'Contacto telefónico con el cliente'],
+      ['Visita', 'Visita al cliente o a su negocio']
+    ];
+    for (const t of eventTypes) {
+      await pool.query('INSERT INTO event_types (name, description) VALUES ($1, $2)', t);
+    }
     console.log('Datos de demo insertados');
   }
 

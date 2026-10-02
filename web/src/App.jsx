@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Clientes from './pages/Clientes';
 import Oportunidades from './pages/Oportunidades';
+import Datos from './pages/Datos';
 import Usuarios from './pages/Usuarios';
 
 function AppRoutes() {
@@ -17,6 +18,7 @@ function AppRoutes() {
         <Route path="/" element={<Dashboard />} />
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/oportunidades" element={<Oportunidades />} />
+        <Route path="/datos" element={<Datos />} />
         <Route
           path="/usuarios"
           element={user.role === 'admin' ? <Usuarios /> : <Navigate to="/" replace />}

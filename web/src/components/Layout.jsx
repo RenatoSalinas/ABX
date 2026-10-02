@@ -11,6 +11,7 @@ export default function Layout({ children }) {
           <NavLink to="/" end>📊 Dashboard</NavLink>
           <NavLink to="/clientes">👥 Clientes</NavLink>
           <NavLink to="/oportunidades">💼 Oportunidades</NavLink>
+          <NavLink to="/datos">🗂️ Datos</NavLink>
           {user.role === 'admin' && <NavLink to="/usuarios">🔑 Usuarios</NavLink>}
         </nav>
         <div className="user-box">
